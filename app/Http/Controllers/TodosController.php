@@ -15,7 +15,7 @@ class TodosController extends Controller
 
     public function store(Request $request) {
     	$todo = new Todo();
-    	// validacija
+    	// validate
     	$rules = Todo::STORE_RULES;
     	$request->validate($rules);
     	// new data
@@ -28,5 +28,23 @@ class TodosController extends Controller
             $todo->save();
         }
         return $todo;
+    }
+
+    public function update(Request $request, $id) {
+        $todo = Todo::find($id);
+        // if no todo in db make message
+        if(! $todo) {
+            return response()->json(['message' => 'Todo not found'], 404);
+        }
+        $todo->title = $request->input('title');
+        $todo->completed = $request->input('completed');
+        $todo->save();
+        return $todo;
+    }
+
+    public function destroy($id) {
+        $todo = Todo::find($id);
+        $todo->delete();
+        return response()->json(['message' => 'Todo deleted'], 200);
     }
 }
