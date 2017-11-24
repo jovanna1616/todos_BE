@@ -10,4 +10,8 @@ class Todo extends Model
     protected $fillable = [
         'title', 'completed'
     ];
+
+    const STORE_RULES = [
+        'title' => 'required|min:5|max:255'
+    ];
 }
