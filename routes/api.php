@@ -18,6 +18,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::middleware('api')->get('/todos', 'TodosController@index');
+Route::middleware('api')->get('/todos/{id}', 'TodosController@show');
 Route::middleware('api')->post('/todos', 'TodosController@store');
 Route::middleware('api')->put('/todos/{id}', 'TodosController@update');
 Route::middleware('api')->delete('/todos/{id}', 'TodosController@destroy');
