@@ -27,7 +27,6 @@ class CreateTodosTableAddColumnPriority extends Migration
     public function down()
     {
         //kod koji vraca tabelu todos na prethodno stanje
-
         Schema::table('todos', function (Blueprint $table) {
             $table->dropColumn('priority');
         });
