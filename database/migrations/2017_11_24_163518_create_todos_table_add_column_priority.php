@@ -14,7 +14,8 @@ class CreateTodosTableAddColumnPriority extends Migration
     public function up()
     {
         Schema::table('todos', function (Blueprint $table) {
-            $table->string('priority');
+            // promeniti na integer
+            $table->integer('priority');
         });
     }
 
@@ -25,6 +26,10 @@ class CreateTodosTableAddColumnPriority extends Migration
      */
     public function down()
     {
-        //
+        //kod koji vraca tabelu todos na prethodno stanje
+
+        Schema::table('todos', function (Blueprint $table) {
+            $table->dropColumn('priority');
+        });
     }
 }
