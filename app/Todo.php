@@ -7,7 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Todo extends Model
 {
 	protected $guarded = ['id'];
-    protected $fillable = [
+    protected $fillable = 
+    [
         'title', 'completed', 'priority'
     ];
     const OPTIONS = 
@@ -21,6 +22,6 @@ class Todo extends Model
 	// ubaciti proveru da li je unet option.text u const OPTIONS
     const STORE_RULES = [
         'title' => 'required|min:5|max:255',
-        'priority' => 'required',
+        'priority' => 'required'
     ];
 }
